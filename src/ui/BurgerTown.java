@@ -99,33 +99,103 @@ public class BurgerTown {
         unidades = new int[platos];
 
     }
-
+/**
+     * Descripcion: Este metodo se encarga de solicitar los precios y la cantidad de cada plat, guardando esta informacion
+     * en  arreglos, recorriendo el arreglo con la longitud ya dada por el usuario
+     * pre: El scanner  esta inicializado
+     * pre: Los arreglos precios y unidades estan inicializados
+     * pos: Los datos quedan ingresados en los arreglos
+     * 
+     */
     public static void solicitarDatos(){
 
-     
+
+        
+        for (int i = 0; i < precios.length; i++) {
+
+
+        System.out.println("Digite el precio del plato "+(i+1));
+        
+            precios[i] = reader.nextDouble();
+        
+
+        System.out.println("Digite la cantidad de platos "+(i+1));
+        
+            unidades[i] = reader.nextInt();
+        
+        }
+
+
+
+        
     }
+    /**
+     * Descripcion: Este metodo se encarga de calcular el total de platos vendidos durante el dia,
+     * recorriendo el arreglo de unidades y sumando los valores  
+     * pre: Los arreglos precios y unidades estan inicializados
+     * pos: Los datos quedan ingresados en los arreglos 
+     * @return int vendidos se devuelve la suma de los platos como entero
+     */
 
     public static int calcularTotalPlatosVendidos(){
+        
+        int vendidos = 0;
 
-        return 0;
+        for (int i = 0; i < unidades.length; i++){
+            vendidos += unidades[i];
+        }
+
+        return vendidos;
+        
 
     }
+    /**
+     * Descripcion: El metodo debe calcula el precio promedio de los platos vendidos en el dia, recorriendo el arreglo precios y
+     * sumando los valores, para luego dividirlo por la cantidad de espacios
+     * pre: El arreglo precios esta inicializado
+     * pre: el arreglo no puede estar vacio
+     * @return double promedio se devuelve el calculo del del precio promedio como double
+     */
 
     public static double calcularPrecioPromedio(){
 
-        return 0;
+        double sum_precios=0;
+        double promedio=0;
+
+        for (int i=0; i<precios.length; i++){
+            sum_precios += precios[i];
+
+        }
+            promedio=sum_precios/precios.length;
+
+        return promedio ;
+       
 
     }
 
     public static double calcularVentasTotales(){
 
-        return 0;
+        double ventas_totales = 0;
+
+        for (int i = 0; i < unidades.length; i++){
+
+            ventas_totales += unidades[i]*precios[i];
+
+        }
+
+
+        return ventas_totales;
 
     }
 
     public static int consultarPlatosSobreLimite(double limite){
+        int min_ventas=0;
+        for(int i = 0; i< unidades.length; i++){
+            if ((unidades[i]*precios[i])>limite)
+            min_ventas++;
+        }
 
-        return 0;
+        return min_ventas;
 
     }
 
